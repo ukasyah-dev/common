@@ -2,11 +2,14 @@ package handler
 
 import (
 	"context"
+	"fmt"
 	"reflect"
 	"slices"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/iancoleman/strcase"
+	"github.com/samber/lo"
 	"github.com/ukasyah-dev/common/rest/server"
 )
 
@@ -36,17 +39,37 @@ func Add[I, O any](srv *server.Server, method string, path string, f func(contex
 		config = configs[0]
 	}
 
+	// Change path params format from :pathParam to {pathParam}
+	openapiPath := lo.Reduce(
+		strings.Split(path, "/"),
+		func(acc string, segment string, i int) string {
+			if segment == "" {
+				return acc
+			}
+
+			if strings.HasPrefix(segment, ":") {
+				segment = strings.Replace(segment, ":", "", 1)
+				segment = fmt.Sprintf("{%s}", segment)
+			}
+
+			return acc + "/" + segment
+		},
+		"",
+	)
+
 	// Add OpenAPI operation
 	openapiReflector := srv.Config.OpenAPI.Reflector
 	if openapiReflector != nil {
-		op, _ := openapiReflector.NewOperationContext(method, path)
+		op, _ := openapiReflector.NewOperationContext(method, openapiPath)
 		op.SetID(strcase.ToLowerCamel(funcName))
 		op.SetSummary(config.Summary)
 		op.SetDescription(config.Description)
 		op.SetTags(config.Tags...)
 		op.AddReqStructure(in)
 		op.AddRespStructure(out)
-		openapiReflector.AddOperation(op)
+		if err := openapiReflector.AddOperation(op); err != nil {
+			panic(err)
+		}
 	}
 
 	parseBody := hasTag(reflect.TypeOf(*in), "json") && slices.Contains([]string{"POST", "PUT", "PATCH"}, method)
