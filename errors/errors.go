@@ -1,6 +1,10 @@
 package errors
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/ukasyah-dev/common/cases"
+)
 
 type Error struct {
 	Code    string
@@ -9,7 +13,7 @@ type Error struct {
 
 func (e *Error) Error() string {
 	if e.Message == "" {
-		return e.Code
+		return cases.ToSentence(e.Code)
 	}
 	return e.Message
 }
@@ -32,7 +36,7 @@ func (e *Error) GetHTTPStatus() int {
 	return http.StatusInternalServerError
 }
 
-func pick(msg []string) string {
+func pickFirst(msg []string) string {
 	if len(msg) > 0 {
 		return msg[0]
 	}
@@ -42,7 +46,7 @@ func pick(msg []string) string {
 func AlreadyExists(msg ...string) *Error {
 	return &Error{
 		Code:    ALREADY_EXISTS,
-		Message: pick(msg),
+		Message: pickFirst(msg),
 	}
 }
 
@@ -56,7 +60,7 @@ func IsAlreadyExists(err error) bool {
 func Internal(msg ...string) *Error {
 	return &Error{
 		Code:    INTERNAL,
-		Message: pick(msg),
+		Message: pickFirst(msg),
 	}
 }
 
@@ -70,7 +74,7 @@ func IsInternal(err error) bool {
 func InvalidArgument(msg ...string) *Error {
 	return &Error{
 		Code:    INVALID_ARGUMENT,
-		Message: pick(msg),
+		Message: pickFirst(msg),
 	}
 }
 
@@ -84,7 +88,7 @@ func IsInvalidArgument(err error) bool {
 func NotFound(msg ...string) *Error {
 	return &Error{
 		Code:    NOT_FOUND,
-		Message: pick(msg),
+		Message: pickFirst(msg),
 	}
 }
 
@@ -98,7 +102,7 @@ func IsNotFound(err error) bool {
 func PermissionDenied(msg ...string) *Error {
 	return &Error{
 		Code:    PERMISSION_DENIED,
-		Message: pick(msg),
+		Message: pickFirst(msg),
 	}
 }
 
@@ -112,7 +116,7 @@ func IsPermissionDenied(err error) bool {
 func Unauthenticated(msg ...string) *Error {
 	return &Error{
 		Code:    UNAUTHENTICATED,
-		Message: pick(msg),
+		Message: pickFirst(msg),
 	}
 }
 

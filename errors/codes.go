@@ -1,8 +1,8 @@
 package errors
 
-const ALREADY_EXISTS = "Already exists"
-const INTERNAL = "Internal"
-const INVALID_ARGUMENT = "Invalid argument"
-const NOT_FOUND = "Not found"
-const PERMISSION_DENIED = "Permission denied"
-const UNAUTHENTICATED = "Unauthenticated"
+const ALREADY_EXISTS = "ALREADY_EXISTS"
+const INTERNAL = "INTERNAL"
+const INVALID_ARGUMENT = "INVALID_ARGUMENT"
+const NOT_FOUND = "NOT_FOUND"
+const PERMISSION_DENIED = "PERMISSION_DENIED"
+const UNAUTHENTICATED = "UNAUTHENTICATED"
