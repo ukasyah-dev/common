@@ -6,6 +6,7 @@ import (
 	"github.com/bytedance/sonic"
 	"github.com/gofiber/fiber/v2"
 	"github.com/swaggest/openapi-go/openapi31"
+	"github.com/ukasyah-dev/common/errors"
 )
 
 type Server struct {
@@ -41,7 +42,9 @@ func New(configs ...Config) *Server {
 			ErrorHandler: func(c *fiber.Ctx, err error) error {
 				code := fiber.StatusInternalServerError
 
-				if e, ok := err.(*fiber.Error); ok {
+				if e, ok := err.(*errors.Error); ok {
+					code = e.GetHTTPStatus()
+				} else if e, ok := err.(*fiber.Error); ok {
 					code = e.Code
 				}
 
