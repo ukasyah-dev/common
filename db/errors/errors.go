@@ -1,8 +1,8 @@
 package errors
 
 import (
-	"github.com/jackc/pgconn"
 	"github.com/jackc/pgerrcode"
+	"github.com/jackc/pgx/v5/pgconn"
 )
 
 func IsUniqueViolation(err error) bool {
