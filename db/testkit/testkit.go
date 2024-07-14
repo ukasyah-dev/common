@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/ukasyah-dev/common/db/pool"
+	"github.com/ukasyah-dev/common/id"
 	"gorm.io/gorm"
 )
 
@@ -22,9 +23,10 @@ func CreateTestDB() {
 	}
 
 	dbName = fmt.Sprintf(
-		"%s-test-%d",
+		"%s-test-%d-%s",
 		strings.Replace(info.Path, "/", "", 1),
 		time.Now().Unix(),
+		id.New(5),
 	)
 
 	// Connect to postgres db

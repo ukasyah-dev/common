@@ -11,6 +11,7 @@ require (
 	github.com/go-playground/universal-translator v0.18.1
 	github.com/go-playground/validator/v10 v10.22.0
 	github.com/gofiber/fiber/v2 v2.52.5
+	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/iancoleman/strcase v0.3.0
 	github.com/matcornic/hermes/v2 v2.1.0
 	github.com/matoous/go-nanoid/v2 v2.1.0
