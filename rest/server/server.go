@@ -1,6 +1,7 @@
 package server
 
 import (
+	"crypto"
 	"fmt"
 
 	"github.com/bytedance/sonic"
@@ -15,7 +16,8 @@ type Server struct {
 }
 
 type Config struct {
-	OpenAPI OpenAPI
+	OpenAPI      OpenAPI
+	JWTPublicKey crypto.PublicKey
 }
 
 type OpenAPI struct {
@@ -30,6 +32,8 @@ func New(configs ...Config) *Server {
 	}
 
 	if config.OpenAPI.Spec != nil {
+		config.OpenAPI.Spec.SetHTTPBearerTokenSecurity("Bearer Auth", "JWT", "")
+
 		config.OpenAPI.Reflector = &openapi31.Reflector{
 			Spec: config.OpenAPI.Spec,
 		}

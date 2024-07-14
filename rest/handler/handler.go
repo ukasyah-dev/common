@@ -10,6 +10,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/iancoleman/strcase"
 	"github.com/samber/lo"
+	"github.com/ukasyah-dev/common/rest/middleware"
 	"github.com/ukasyah-dev/common/rest/server"
 )
 
@@ -24,9 +25,10 @@ type Endpoint[I, O any] struct {
 }
 
 type Config struct {
-	Summary     string
-	Description string
-	Tags        []string
+	Summary      string
+	Description  string
+	Tags         []string
+	Authenticate bool
 }
 
 func Add[I, O any](srv *server.Server, method string, path string, f func(context.Context, *I) (*O, error), configs ...Config) {
@@ -67,6 +69,11 @@ func Add[I, O any](srv *server.Server, method string, path string, f func(contex
 		op.SetTags(config.Tags...)
 		op.AddReqStructure(in)
 		op.AddRespStructure(out)
+
+		if config.Authenticate {
+			op.AddSecurity("Bearer Auth")
+		}
+
 		if err := openapiReflector.AddOperation(op); err != nil {
 			panic(err)
 		}
@@ -77,6 +84,10 @@ func Add[I, O any](srv *server.Server, method string, path string, f func(contex
 	parseQuery := hasTag(reflect.TypeOf(*in), "query")
 
 	fiberHandlers := []fiber.Handler{}
+
+	if config.Authenticate {
+		fiberHandlers = append(fiberHandlers, middleware.Authenticate(srv.Config.JWTPublicKey))
+	}
 
 	fiberHandlers = append(fiberHandlers, func(c *fiber.Ctx) error {
 		in := new(I)
