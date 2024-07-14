@@ -10,10 +10,10 @@ import (
 
 var smtpClient *mail.SMTPClient
 
-func Open(smtpURL string) error {
+func Open(smtpURL string) {
 	parsed, err := url.Parse(smtpURL)
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	client := mail.NewSMTPClient()
@@ -42,7 +42,7 @@ func Open(smtpURL string) error {
 
 	smtpClient, err = client.Connect()
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	go func() {
@@ -51,8 +51,6 @@ func Open(smtpURL string) error {
 			time.Sleep(30 * time.Second)
 		}
 	}()
-
-	return nil
 }
 
 func Close() error {
