@@ -32,7 +32,7 @@ func New(configs ...Config) *Server {
 	}
 
 	if config.OpenAPI.Spec != nil {
-		config.OpenAPI.Spec.SetHTTPBearerTokenSecurity("Bearer Auth", "JWT", "")
+		config.OpenAPI.Spec.SetHTTPBearerTokenSecurity("Bearer auth", "JWT", "")
 
 		config.OpenAPI.Reflector = &openapi31.Reflector{
 			Spec: config.OpenAPI.Spec,

@@ -71,7 +71,7 @@ func Add[I, O any](srv *server.Server, method string, path string, f func(contex
 		op.AddRespStructure(out)
 
 		if config.Authenticate {
-			op.AddSecurity("Bearer Auth")
+			op.AddSecurity("Bearer auth")
 		}
 
 		if err := openapiReflector.AddOperation(op); err != nil {
