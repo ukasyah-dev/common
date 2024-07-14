@@ -22,6 +22,7 @@ func Open(dsn string) (*gorm.DB, error) {
 				ParameterizedQueries:      os.Getenv("REVEAL_DB_LOG_VALUES") != "true",
 			},
 		),
+		TranslateError: true,
 	})
 	if err != nil {
 		return nil, err
