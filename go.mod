@@ -18,7 +18,7 @@ require (
 	github.com/matthewhartstonge/argon2 v1.0.0
 	github.com/pilagod/gorm-cursor-paginator/v2 v2.6.1
 	github.com/rs/zerolog v1.33.0
-	github.com/samber/lo v1.45.0
+	github.com/samber/lo v1.46.0
 	github.com/steinfletcher/apitest v1.5.16
 	github.com/swaggest/openapi-go v0.2.53
 	github.com/xhit/go-simple-mail/v2 v2.16.0

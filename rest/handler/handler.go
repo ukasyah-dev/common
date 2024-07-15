@@ -29,6 +29,7 @@ type Config struct {
 	Description  string
 	Tags         []string
 	Authenticate bool
+	SuperAdmin   bool
 }
 
 func Add[I, O any](srv *server.Server, method string, path string, f func(context.Context, *I) (*O, error), configs ...Config) {
@@ -70,7 +71,7 @@ func Add[I, O any](srv *server.Server, method string, path string, f func(contex
 		op.AddReqStructure(in)
 		op.AddRespStructure(out)
 
-		if config.Authenticate {
+		if config.Authenticate || config.SuperAdmin {
 			op.AddSecurity("Bearer auth")
 		}
 
@@ -85,8 +86,12 @@ func Add[I, O any](srv *server.Server, method string, path string, f func(contex
 
 	fiberHandlers := []fiber.Handler{}
 
-	if config.Authenticate {
+	if config.Authenticate || config.SuperAdmin {
 		fiberHandlers = append(fiberHandlers, middleware.Authenticate(srv.Config.JWTPublicKey))
+	}
+
+	if config.SuperAdmin {
+		fiberHandlers = append(fiberHandlers, middleware.SuperAdmin())
 	}
 
 	fiberHandlers = append(fiberHandlers, func(c *fiber.Ctx) error {
