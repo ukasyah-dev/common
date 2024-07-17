@@ -1,5 +1,7 @@
 package model
 
+import "github.com/ukasyah-dev/common/constant"
+
 type Empty struct{}
 
 type BasicResponse struct {
@@ -26,4 +28,9 @@ type PaginationRequest struct {
 type PaginationResponse struct {
 	Cursor Cursor `json:"cursor"`
 	Total  int64  `json:"total"`
+}
+
+type Mutation[T any] struct {
+	Type constant.MutationType `json:"type"`
+	Data *T                    `json:"data"`
 }

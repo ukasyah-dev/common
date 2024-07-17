@@ -17,6 +17,7 @@ require (
 	github.com/matoous/go-nanoid/v2 v2.1.0
 	github.com/matthewhartstonge/argon2 v1.0.0
 	github.com/pilagod/gorm-cursor-paginator/v2 v2.6.1
+	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/rs/zerolog v1.33.0
 	github.com/samber/lo v1.46.0
 	github.com/steinfletcher/apitest v1.5.16
