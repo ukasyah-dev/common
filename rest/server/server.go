@@ -8,6 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/swaggest/openapi-go/openapi31"
 	"github.com/ukasyah-dev/common/errors"
+	pb "github.com/ukasyah-dev/pb/authority"
 )
 
 type Server struct {
@@ -16,8 +17,9 @@ type Server struct {
 }
 
 type Config struct {
-	OpenAPI      OpenAPI
-	JWTPublicKey crypto.PublicKey
+	OpenAPI         OpenAPI
+	JWTPublicKey    crypto.PublicKey
+	AuthorityClient pb.AuthorityClient
 }
 
 type OpenAPI struct {

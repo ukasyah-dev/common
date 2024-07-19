@@ -96,7 +96,7 @@ func Add[I, O any](srv *server.Server, method string, path string, f func(contex
 	}
 
 	if config.Permission != "" {
-		fiberHandlers = append(fiberHandlers, middleware.CheckPermission(config.Permission))
+		fiberHandlers = append(fiberHandlers, middleware.CheckPermission(srv.Config.AuthorityClient, config.Permission))
 	}
 
 	fiberHandlers = append(fiberHandlers, func(c *fiber.Ctx) error {

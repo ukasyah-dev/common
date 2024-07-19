@@ -1,6 +1,6 @@
 module github.com/ukasyah-dev/common
 
-go 1.22.4
+go 1.22.5
 
 replace github.com/imdario/mergo => github.com/imdario/mergo v0.3.16
 
@@ -22,8 +22,10 @@ require (
 	github.com/samber/lo v1.46.0
 	github.com/steinfletcher/apitest v1.5.16
 	github.com/swaggest/openapi-go v0.2.53
+	github.com/ukasyah-dev/pb v0.0.0-20240719072450-1acd76e5ed6a
 	github.com/xhit/go-simple-mail/v2 v2.16.0
 	golang.org/x/text v0.16.0
+	google.golang.org/grpc v1.65.0
 	gorm.io/driver/postgres v1.5.9
 	gorm.io/gorm v1.25.11
 )
@@ -80,5 +82,7 @@ require (
 	golang.org/x/net v0.27.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/sys v0.22.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240711142825-46eb208f015d // indirect
+	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
