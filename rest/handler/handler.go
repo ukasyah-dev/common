@@ -81,7 +81,8 @@ func Add[I, O any](srv *server.Server, method string, path string, f func(contex
 		}
 	}
 
-	parseBody := hasTag(reflect.TypeOf(*in), "json") && slices.Contains([]string{"POST", "PUT", "PATCH"}, method)
+	parseBody := (hasTag(reflect.TypeOf(*in), "json") || hasTag(reflect.TypeOf(*in), "form")) &&
+		slices.Contains([]string{"POST", "PUT", "PATCH"}, method)
 	parseParams := hasTag(reflect.TypeOf(*in), "params")
 	parseQuery := hasTag(reflect.TypeOf(*in), "query")
 
