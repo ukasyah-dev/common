@@ -1,10 +1,10 @@
 package paginator
 
 import (
+	"github.com/emitra-labs/common/errors"
+	"github.com/emitra-labs/common/log"
+	"github.com/emitra-labs/common/model"
 	"github.com/pilagod/gorm-cursor-paginator/v2/paginator"
-	"github.com/ukasyah-dev/common/errors"
-	"github.com/ukasyah-dev/common/log"
-	"github.com/ukasyah-dev/common/model"
 	"gorm.io/gorm"
 )
 

@@ -2,9 +2,9 @@ package mail
 
 import (
 	"github.com/caitlinelfring/go-env-default"
+	"github.com/emitra-labs/common/log"
 	"github.com/matcornic/hermes/v2"
 	"github.com/samber/lo"
-	"github.com/ukasyah-dev/common/log"
 )
 
 type Email struct {

@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/ukasyah-dev/common/model"
-	"github.com/ukasyah-dev/common/rest/server"
+	"github.com/emitra-labs/common/model"
+	"github.com/emitra-labs/common/rest/server"
 )
 
 type Health struct {

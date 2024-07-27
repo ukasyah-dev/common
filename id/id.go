@@ -1,8 +1,8 @@
 package id
 
 import (
+	"github.com/emitra-labs/common/log"
 	gonanoid "github.com/matoous/go-nanoid/v2"
-	"github.com/ukasyah-dev/common/log"
 )
 
 func New(l ...int) string {

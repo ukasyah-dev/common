@@ -1,9 +1,9 @@
 package hash
 
 import (
+	"github.com/emitra-labs/common/errors"
+	"github.com/emitra-labs/common/log"
 	"github.com/matthewhartstonge/argon2"
-	"github.com/ukasyah-dev/common/errors"
-	"github.com/ukasyah-dev/common/log"
 )
 
 var argon = argon2.DefaultConfig()

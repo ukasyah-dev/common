@@ -1,9 +1,9 @@
 package middleware
 
 import (
+	"github.com/emitra-labs/common/constant"
+	"github.com/emitra-labs/common/errors"
 	"github.com/gofiber/fiber/v2"
-	"github.com/ukasyah-dev/common/constant"
-	"github.com/ukasyah-dev/common/errors"
 )
 
 func SuperAdmin() fiber.Handler {

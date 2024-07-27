@@ -5,10 +5,10 @@ import (
 	"fmt"
 
 	"github.com/bytedance/sonic"
+	"github.com/emitra-labs/common/errors"
+	pb "github.com/emitra-labs/pb/authority"
 	"github.com/gofiber/fiber/v2"
 	"github.com/swaggest/openapi-go/openapi31"
-	"github.com/ukasyah-dev/common/errors"
-	pb "github.com/ukasyah-dev/pb/authority"
 )
 
 type Server struct {

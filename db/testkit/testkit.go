@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ukasyah-dev/common/db/pool"
-	"github.com/ukasyah-dev/common/id"
+	"github.com/emitra-labs/common/db/pool"
+	"github.com/emitra-labs/common/id"
 	"gorm.io/gorm"
 )
 

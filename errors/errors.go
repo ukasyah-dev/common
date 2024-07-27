@@ -3,7 +3,7 @@ package errors
 import (
 	"net/http"
 
-	"github.com/ukasyah-dev/common/cases"
+	"github.com/emitra-labs/common/cases"
 )
 
 type Error struct {

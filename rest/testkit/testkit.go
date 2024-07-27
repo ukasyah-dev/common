@@ -4,9 +4,9 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/emitra-labs/common/rest/server"
 	"github.com/gofiber/fiber/v2"
 	"github.com/steinfletcher/apitest"
-	"github.com/ukasyah-dev/common/rest/server"
 )
 
 func New(s *server.Server) *apitest.APITest {

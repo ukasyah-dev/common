@@ -7,11 +7,11 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/emitra-labs/common/rest/middleware"
+	"github.com/emitra-labs/common/rest/server"
 	"github.com/gofiber/fiber/v2"
 	"github.com/iancoleman/strcase"
 	"github.com/samber/lo"
-	"github.com/ukasyah-dev/common/rest/middleware"
-	"github.com/ukasyah-dev/common/rest/server"
 )
 
 type Endpoint[I, O any] struct {

@@ -3,9 +3,9 @@ package amqp
 import (
 	"context"
 
-	"github.com/ukasyah-dev/common/constant"
-	"github.com/ukasyah-dev/common/log"
-	"github.com/ukasyah-dev/common/model"
+	"github.com/emitra-labs/common/constant"
+	"github.com/emitra-labs/common/log"
+	"github.com/emitra-labs/common/model"
 	"gorm.io/gorm"
 )
 

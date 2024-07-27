@@ -4,10 +4,10 @@ import (
 	"crypto"
 	"strings"
 
+	"github.com/emitra-labs/common/auth"
+	"github.com/emitra-labs/common/constant"
+	"github.com/emitra-labs/common/errors"
 	"github.com/gofiber/fiber/v2"
-	"github.com/ukasyah-dev/common/auth"
-	"github.com/ukasyah-dev/common/constant"
-	"github.com/ukasyah-dev/common/errors"
 )
 
 func Authenticate(publicKey crypto.PublicKey) fiber.Handler {

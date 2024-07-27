@@ -1,6 +1,6 @@
 package model
 
-import "github.com/ukasyah-dev/common/constant"
+import "github.com/emitra-labs/common/constant"
 
 type Empty struct{}
 

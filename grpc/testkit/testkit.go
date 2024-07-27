@@ -3,7 +3,7 @@ package testkit
 import (
 	"net"
 
-	"github.com/ukasyah-dev/common/log"
+	"github.com/emitra-labs/common/log"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

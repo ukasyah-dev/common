@@ -4,9 +4,9 @@ import (
 	"crypto"
 	"encoding/base64"
 
+	"github.com/emitra-labs/common/errors"
+	"github.com/emitra-labs/common/log"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/ukasyah-dev/common/errors"
-	"github.com/ukasyah-dev/common/log"
 )
 
 type Claims struct {
