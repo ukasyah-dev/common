@@ -38,7 +38,7 @@ func (e *Error) GetHTTPStatus() int {
 	return http.StatusInternalServerError
 }
 
-func GRPCStatus(err error) error {
+func ToGRPCStatus(err error) error {
 	e, ok := err.(*Error)
 	if !ok {
 		return status.Error(codes.Internal, err.Error())
