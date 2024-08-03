@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	"github.com/emitra-labs/common/cases"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type Error struct {
@@ -34,6 +36,30 @@ func (e *Error) GetHTTPStatus() int {
 		return http.StatusUnauthorized
 	}
 	return http.StatusInternalServerError
+}
+
+func GRPCStatus(err error) error {
+	e, ok := err.(*Error)
+	if !ok {
+		return status.Error(codes.Internal, err.Error())
+	}
+
+	switch e.Code {
+	case ALREADY_EXISTS:
+		return status.Error(codes.AlreadyExists, e.Error())
+	case INTERNAL:
+		return status.Error(codes.Internal, e.Error())
+	case INVALID_ARGUMENT:
+		return status.Error(codes.InvalidArgument, e.Error())
+	case NOT_FOUND:
+		return status.Error(codes.NotFound, e.Error())
+	case PERMISSION_DENIED:
+		return status.Error(codes.PermissionDenied, e.Error())
+	case UNAUTHENTICATED:
+		return status.Error(codes.Unauthenticated, e.Error())
+	}
+
+	return status.Error(codes.Internal, e.Error())
 }
 
 func pickFirst(msg []string) string {
